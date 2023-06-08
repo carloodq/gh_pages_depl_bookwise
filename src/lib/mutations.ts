@@ -1,9 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import {
-  GeneratePromptBody,
-  GeneratePromptResponse,
-  generatePrompt,
-} from "./api";
+import { GeneratePromptBody, generatePrompt } from "./api";
 
 export const useGeneratePrompt = () => {
   return useMutation({
