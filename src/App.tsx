@@ -1,10 +1,15 @@
 import { useState } from "react";
-import "./App.css";
 import { Header } from "./components/Header";
 import { Categories } from "./components/Categories";
+import { useGeneratePrompt } from "./lib/mutations";
+import { Spinner } from "./components/Spinner";
+import "./App.css";
+import { Prompt } from "./components/Prompt";
 
 function App() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const { mutate, isLoading, isSuccess, data } = useGeneratePrompt();
 
   const handleSelectionOfNewCategory = (newCategory: string) => {
     if (selectedCategories.find((category) => category === newCategory)) {
@@ -15,6 +20,16 @@ function App() {
       setSelectedCategories([...selectedCategories, newCategory]);
     }
   };
+
+  const handleGenerateSuggestion = () => {
+    if (!noGenresSelected)
+      mutate({
+        genres: selectedCategories,
+        prompter: "Matteo",
+      });
+  };
+
+  const noGenresSelected = selectedCategories.length === 0;
 
   return (
     <>
@@ -29,6 +44,20 @@ function App() {
             handleSelectionOfNewCategory(category)
           }
         />
+        <div className="mt-16 flex justify-center items-center">
+          <button
+            disabled={noGenresSelected}
+            onClick={handleGenerateSuggestion}
+            className={`${
+              noGenresSelected
+                ? "bg-slate-300"
+                : "bg-slate-500 hover:bg-slate-600"
+            } text-white font-bold py-2 px-12 rounded`}
+          >
+            {isLoading ? <Spinner /> : "Submit"}
+          </button>
+        </div>
+        {isSuccess && <Prompt promptData={data} />}
       </main>
     </>
   );
