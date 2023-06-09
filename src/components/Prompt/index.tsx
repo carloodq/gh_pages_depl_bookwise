@@ -1,10 +1,17 @@
 import { GeneratePromptResponse } from "../../lib/api";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface Props {
   promptData: GeneratePromptResponse;
 }
 
 export const Prompt: React.FC<Props> = ({ promptData }) => {
+  const textToCopy = `Hi, I would like to know what are your favourite books in the following genres? \n\n${promptData.data.genres.map(
+    (genre) => `- ${genre}\n`
+  )}\nPlease go to https://app.arsolutions.it/api/v1/prompt/${
+    promptData.data._id[0].$oid
+  } and share your recommendations!`;
+
   return (
     <div className="mt-16 text-center">
       <p>
@@ -16,11 +23,16 @@ export const Prompt: React.FC<Props> = ({ promptData }) => {
           <li key={genre}>{genre}</li>
         ))}
       </ul>
-      <p>
+      <p className="mb-8">
         {`Please go to
     https://app.arsolutions.it/api/v1/prompt/${promptData.data._id[0].$oid}
     and share your recommendations!`}
       </p>
+      <CopyToClipboard text={textToCopy} onCopy={() => alert("copied")}>
+        <button className="border-slate-500 border-2 font-bold py-2 px-12 rounded">
+          copy
+        </button>
+      </CopyToClipboard>
     </div>
   );
 };
