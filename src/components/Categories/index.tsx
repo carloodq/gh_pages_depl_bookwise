@@ -32,7 +32,7 @@ export const Categories: React.FC<Props> = ({
             onClick={() => onSelectCategory(category)}
             className={`${backgroundColor()} ${
               isSelected ? "text-white" : "text-black"
-            } flex justify-center items-center py-4 px-2 `}
+            } flex justify-center items-center py-4 px-2 rounded-sm`}
           >
             <span>{category}</span>
           </button>
