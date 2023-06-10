@@ -13,12 +13,12 @@ export const Prompt: React.FC<Props> = ({ promptData }) => {
   } and share your recommendations!`;
 
   return (
-    <div className="mt-16 text-center">
+    <div className="mt-8 md:mt-16 md:text-center">
       <p>
         Hi, I would like to know what are your favourite books in the following
         genres?
       </p>
-      <ul className="list-disc list-inside">
+      <ul className="my-2 list-disc list-inside">
         {promptData.data.genres.map((genre) => (
           <li key={genre}>{genre}</li>
         ))}
@@ -28,7 +28,13 @@ export const Prompt: React.FC<Props> = ({ promptData }) => {
     https://app.arsolutions.it/api/v1/prompt/${promptData.data._id[0].$oid}
     and share your recommendations!`}
       </p>
-      <CopyToClipboard text={textToCopy} onCopy={() => alert("copied")}>
+      <CopyToClipboard
+        text={textToCopy}
+        onCopy={() =>
+          //TODO: show a success message
+          alert("copied")
+        }
+      >
         <button className="border-slate-500 border-2 font-bold py-2 px-12 rounded">
           copy
         </button>

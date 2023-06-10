@@ -10,7 +10,7 @@ export const Categories: React.FC<Props> = ({
   onSelectCategory,
 }) => {
   return (
-    <div className="mt-8 grid grid-cols-6 gap-x-4 gap-y-4">
+    <div className="mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-6 gap-x-4 gap-y-4">
       {categories.map((category) => {
         const isSelected = selectedCategories.find((cat) => cat === category);
         const isDisabled = selectedCategories.length === 3 && !isSelected;

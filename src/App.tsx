@@ -34,8 +34,8 @@ function App() {
   return (
     <>
       <Header />
-      <main className="max-w-screen-xl mx-auto">
-        <h1 className="mt-8 text-2xl">
+      <main className="mx-4 md:mx-auto mb-8 md:mb-0 max-w-screen-xl">
+        <h1 className="mt-8 text-lg md:text-2xl">
           Select at least three of the following genres
         </h1>
         <Categories
@@ -44,7 +44,7 @@ function App() {
             handleSelectionOfNewCategory(category)
           }
         />
-        <div className="mt-16 flex justify-center items-center">
+        <div className="mt-8 md:mt-16 flex justify-center items-center">
           <button
             disabled={noGenresSelected}
             onClick={handleGenerateSuggestion}

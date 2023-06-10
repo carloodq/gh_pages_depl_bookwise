@@ -1,9 +1,9 @@
 export const Header: React.FC = () => {
   return (
     <header className="bg-slate-300 py-4">
-      <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+      <div className="mx-4 md:mx-auto md:max-w-screen-xl flex justify-between items-center">
         <div className="text-2xl">BookWise</div>
-        <nav>
+        <nav className="hidden md:block">
           <ul className="flex">
             <li className="mr-4">Ask</li>
             <li>Give</li>
