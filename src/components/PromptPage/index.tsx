@@ -27,6 +27,7 @@ export const PromptPage = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormFields>();
 
@@ -57,6 +58,7 @@ export const PromptPage = () => {
       recommender: "",
       title: `${book.volumeInfo.title} - ${book.volumeInfo.subtitle}`,
     });
+    reset();
   };
 
   return (
