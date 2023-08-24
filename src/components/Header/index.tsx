@@ -7,12 +7,6 @@ export const Header: React.FC = () => {
         <div>
           <img src={logo} alt="bookwise logo" width={150} />
         </div>
-        <nav className="hidden md:block">
-          <ul className="flex">
-            <li className="mr-4">Ask</li>
-            <li>Give</li>
-          </ul>
-        </nav>
       </div>
     </header>
   );
